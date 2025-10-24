@@ -1,0 +1,55 @@
+nav ul{
+    display : flex;
+    padding: 20px;
+    text-align: center;
+    
+}
+
+nav ul li a{
+    padding-right : 20px;
+   font-family: cursive;
+   text-decoration: none;
+   
+   
+}
+
+header {
+    background-color: black;
+     border-radius: 25px;
+     display: block;
+}
+
+
+#oceans_vid{
+    width : 100vw;
+    height : auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+.video-container {
+  width: 100vw;
+  height: 50vh;        /* control height of the box instead */
+  overflow: hidden;    /* hides excess video if needed */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  z-index: -10;
+}
+#snow{
+    width : auto;
+    height: auto;
+    align-items: center;
+    text-align: center;
+    margin-left: 35%;
+    margin-bottom: 15px;
+}
+h1{
+    font-family: cursive;
+    color : black;
+    font-size: 70px;
+    text-align: center;
+}
