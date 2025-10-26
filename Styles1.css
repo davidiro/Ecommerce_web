@@ -11,8 +11,8 @@ nav ul li a{
    font-family: cursive;
    text-decoration: none;
     margin: 30px;
-    font-style: bold;;
-    color: rgb(234, 150, 41);
+   font-style: bold;;
+   color: rgb(234, 150, 41);
    
    
 }
@@ -79,7 +79,7 @@ h1::before{
     width: 120px;        /* adjust to desired size */
     height: 120px;
     margin-right: 10px;
-    background-image: url("snowboard toony image.png"); 
+    background-image: url("images/snowboard\ toony\ image.png"); 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -95,6 +95,7 @@ h1::before{
     overflow: auto;
     background-color: beige;
 }
+
 .side-view img{
     width : 30%;
     height : 300px;
