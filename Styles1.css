@@ -130,3 +130,57 @@ div.side-view:nth-child(5){
     object-fit: cover; /* keeps images from stretching */
 }
 
+side-view-wrapper{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+/* horizontal scroll container */
+.side-view{
+    width: 90%;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+   
+    scroll-behavior: smooth;
+    padding: 10px;
+    background-color: transparent; 
+    scrollbar-width: none;           /* Firefox */
+    -ms-overflow-style: none;    /* Internet Explorer 10+ */
+}
+
+/* keep images uniform */
+.side-view img{
+    flex: 0 0 auto; /* prevent shrinking */
+    width: 280px;   /* fixed card width */
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* scroll buttons */
+.scroll-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid #ccc;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* left and right positions */
+.scroll-btn.prev{ left: 6%; }
+.scroll-btn.next{ right: 6%; }

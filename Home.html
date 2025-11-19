@@ -41,25 +41,56 @@
     <!-- whats new heading -->
     <h1> Featured items</h1>
 
-    <!-- side view images -->
-    <div class = "side-view"> 
+    <!-- side view images container(wrapped so js can scroll them) -->
+    <div class = "side-view-wrapper">
+     <button class = "scroll_button_prev" aria-lable = "scroll left"></button>
+
+     <div class = "side-view"> 
         <img src = "images/nitro teams.webp" alt = "nitro teams snowboard">
         <img src = "images/Nitro snow board.webp" alt = "nitro mens snow board">
         <img src = "images/Nitro pro board.webp" alt = "Nitro womens snow board">
         <img src = "images/burton waverange step on.webp" alt = "burton womens stow boots">
         <img src = "images/Burton womens waverange.png" alt = "burton womens waverange snow boots">
 
+        </div>
+        <button class = "scroll_button_next" aria-label = "screll next"></button>
     </div>
+
+  <!-- js for scrollable button-->
+   <script>
+    //initialize variables with widgets
+    const container = document.getElementsByClassName("side_view ");
+    const scrollprev = document.querySelector("scroll_button_prev");
+    const scrollnext = document.querySelector("scroll_button_next");
+
+    //amount the buttons will scroll
+    const scrollAmount = Math.round(container.clientWidth * 0.6);
+
+    scrollprev.addEventListener("click", () => {
+        container.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth"
+        });
+    });
+    scrollnext.addEventListener("click", () => {
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth"
+        });
+    });
+
+   </script>
+    
 
     <!-- featured items header-->
      <h1> whats new </h1>
- <div class = "grid-images">
+  <div class = "grid-images">
         <!-- images for the whats new tag-->
     <img src ="images/snowboard fun1.jpg"   alt = "snowboard fun image">
     <img src = "images/snowboard fun 3.jpg" alt = "snowboard fun image">
     <img src = "images/snow board fun2.jpg" alt = "snowboard fun image">
     <img src = "images/snowboard fun4.jpg"  alt = "snowboard fun image">
- </div>
+  </div>
 
     </div>
    
