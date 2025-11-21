@@ -3,35 +3,63 @@
     <title>
        Contact us  
     </title>
+    <link rel="stylesheet" href="contact.css">
 </head>
 <body>
-    <div> 
-        <h1> Tell us how we are doing </h1>
-    </div>
+   <header>
+    <!-- navigation bar -->
+       <div class = "navigation"> 
+        <nav >
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+       </div><br>
+         
+ </header>
+
     <div class = "user_info"> 
         <fieldset id = "customer">
             <!-- form for customer contact information-->
             <form>
                 <legend> Customer information</legend>
             <label for = "Fname"> First name </label>
-            <input name = "First name" id = "Fname" type = "text"><br>
+            <input name = "First name" id = "Fname" type = "text" placeholder="*Enter first name " maxlength="30" required><br>
 
             <label for = "Lname"> Last name</label>
-            <input name = "Last name " id = "Lname" type = "text"><br>
+            <input name = "Last name " id = "Lname" type = "text" placeholder="*Enter last name" maxlength="30" required><br>
 
-            <Label for = "email"> email address</Label>
-            <input name = "Email" id = "email" type = "email"><br>
+            <Label for = "email"> Mailing address</Label>
+            <input name = "Email" id = "email" type = "email" placeholder="*Enter email address"><br>
 
             <label for = "address" > Email address</label>
-            <input name = "custAddress" id = "address" type = "text"><br>
+            <input name = "custAddress" id = "address" type = "text" placeholder="Enter mailing address"><br>
+
+            <label for = "date"> date  </label>
+            <input name = "custDate" type ="date" id = "date"><br>
 
             <label for = "number"> phone number</label>
-            <input name = "custNumber" id = "number" type = "number"><br>
+            <input name = "custNumber" id = "number" type = "text" placeholder = " enter phone number "><br>
             
-            <input type = "checkbox" name = "visited" id = "visit" value = "yes">
-            <label  for = "visited"> is  this your firts time visiiting our website</label><br>
+            <label for = "reason"> Reason for contact</label>
+            <input name = "custreason" id = "reason" type = "text" placeholder = "tell us about your experience "><br>
 
-           <input type = "checkbox" name = "visited" id = "visit" value = "no">
+            <p>Gender:</p>
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="other"> Other</label><br>
+
+            <label  for = "visited"> have you visited our store ?</label>
+            <label> <input type = "radio" name = "Nvisited" id = "Nvisit" value = "no"> no </label>
+            <label> <input type = "radio" name = "visited" id = "visit" value = "no"> yes </label>
+            
+
+            <label for = "satistfaction"> how satisfied were you with our service</label>
+            <input name = "satisfaction" id = "satisfaction" type = "range" min = "1" max = "10"><br>
+            <button type = "submit"> submit</button>
 
             </form>
 

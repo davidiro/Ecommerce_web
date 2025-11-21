@@ -144,12 +144,10 @@ side-view-wrapper{
     display: flex;
     gap: 20px;
     overflow-x: auto;
-   
     scroll-behavior: smooth;
     padding: 10px;
     background-color: transparent; 
-    scrollbar-width: none;           /* Firefox */
-    -ms-overflow-style: none;    /* Internet Explorer 10+ */
+    
 }
 
 /* keep images uniform */

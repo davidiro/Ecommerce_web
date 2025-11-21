@@ -1,0 +1,92 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    display: block;
+    background-color: aliceblue;
+    margin : 0;
+    padding: 50px;
+}
+/* styling for the navigation bar. same as home page*/
+nav ul{
+    display : flex;
+    padding: 20px;
+    text-align: center;
+   
+    
+}
+
+nav ul li a{
+   padding-right : 20px;
+   font-family: cursive;
+   text-decoration: none;
+    margin: 30px;
+   font-style: bold;;
+   color: rgb(234, 150, 41);
+   
+   
+}
+header {
+    background-color: black;
+     border-radius: 25px;
+     display: block;
+     clear:both;
+     height:10%;
+     width: 100% ;
+     margin-top:0%;
+     
+}
+.user_info{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 20px
+}
+
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 80%;
+    max-width: 600px;
+}
+
+
+fieldset {
+    border: 2px solid #b3e0ff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9fcff;
+    text-align: left;
+}
+
+legend {
+    font-weight: bold;
+    color: #0066cc;
+    padding: 5px 10px;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    margin: 10px 0;
+}
+
+input, select, textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+Button{
+    background-color: #004c80;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
