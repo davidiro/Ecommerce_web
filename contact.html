@@ -1,69 +1,145 @@
 <!DOCTYPE html>
+
 <head>
     <title>
-       Contact us  
+        Contact us
     </title>
     <link rel="stylesheet" href="contact.css">
 </head>
-<body>
-   <header>
-    <!-- navigation bar -->
-       <div class = "navigation"> 
-        <nav >
-            <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="Products.html">Products</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="Contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-       </div><br>
-         
- </header>
 
-    <div class = "user_info"> 
-        <fieldset id = "customer">
+<body>
+    <header>
+        <!-- navigation bar -->
+        <div class="navigation">
+            <nav>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Products.html">Products</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div><br>
+
+    </header>
+
+    <div class="user_info">
+        <fieldset id="customer">
             <!-- form for customer contact information-->
             <form>
                 <legend> Customer information</legend>
-            <label for = "Fname"> First name </label>
-            <input name = "First name" id = "Fname" type = "text" placeholder="*Enter first name " maxlength="30" required><br>
+                <label for="Fname"> First name </label>
+                <input name="First name" id="Fname" type="text" placeholder="*Enter first name " maxlength="30"
+                    required><br>
 
-            <label for = "Lname"> Last name</label>
-            <input name = "Last name " id = "Lname" type = "text" placeholder="*Enter last name" maxlength="30" required><br>
+                <label for="Lname"> Last name</label>
+                <input name="Last name " id="Lname" type="text" placeholder="*Enter last name" maxlength="30"
+                    required><br>
 
-            <Label for = "email"> Mailing address</Label>
-            <input name = "Email" id = "email" type = "email" placeholder="*Enter email address"><br>
+                <Label for="email"> Mailing address</Label>
+                <input name="Email" id="email" type="email" placeholder="*Enter email address"><br>
 
-            <label for = "address" > Email address</label>
-            <input name = "custAddress" id = "address" type = "text" placeholder="Enter mailing address"><br>
+                <label for="address"> Email address</label>
+                <input name="custAddress" id="address" type="text" placeholder="Enter mailing address"><br>
 
-            <label for = "date"> date  </label>
-            <input name = "custDate" type ="date" id = "date"><br>
+                <label for="date"> date </label>
+                <input name="custDate" type="date" id="date"><br>
 
-            <label for = "number"> phone number</label>
-            <input name = "custNumber" id = "number" type = "text" placeholder = " enter phone number "><br>
-            
-            <label for = "reason"> Reason for contact</label>
-            <input name = "custreason" id = "reason" type = "text" placeholder = "tell us about your experience "><br>
+                <label for="number"> phone number</label>
+                <input name="custNumber" id="number" type="text" placeholder=" enter phone number "><br>
 
-            <p>Gender:</p>
-            <label><input type="radio" name="gender" value="male"> Male</label>
-            <label><input type="radio" name="gender" value="female"> Female</label>
-            <label><input type="radio" name="gender" value="other"> Other</label><br>
+                <label for="reason"> Reason for contact</label>
+                <input name="custreason" id="reason" type="text" placeholder="tell us about your experience "><br>
 
-            <label  for = "visited"> have you visited our store ?</label>
-            <label> <input type = "radio" name = "Nvisited" id = "Nvisit" value = "no"> no </label>
-            <label> <input type = "radio" name = "visited" id = "visit" value = "no"> yes </label>
-            
+                <p>Gender:</p>
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label><br>
 
-            <label for = "satistfaction"> how satisfied were you with our service</label>
-            <input name = "satisfaction" id = "satisfaction" type = "range" min = "1" max = "10"><br>
-            <button type = "submit"> submit</button>
+                <p>Have you visisted our physical store</p>
+                <label><input type="radio" name="visisted" value="yes">yes</label>
+                <label><input type="radio" name="NVsited" value="No"> No</label><br>
+
+
+                <label for="satistfaction"> how satisfied were you with our service</label>
+                <input name="satisfaction" id="satisfaction" type="range" min="1" max="10"><br>
+
+                <button type="submit" onclick="SaveInfo()"> submit</button>
+
+
+
+
+
+                <!-- script to save customer info into a text file-->
+                <script>
+                    function SaveInfo() {
+                        const fname = document.getElementById("Fname");
+                        const lname = document.getElementById("Lname");
+                        const email = document.getElementById("email");
+                        const address = document.getElementById("address");
+                        const review = documment.getElementById("reason");
+                        const date = document.getElementById("date");
+
+                        // Store customer info
+                        const customer = {
+                            firstName: fname.value,
+                            lastName: lname.value,
+                            emailAddress: email.value,
+                            mailingAddress: address.value,
+                            reason: review.value
+                        };
+
+                        // Convert object to JSON
+                        const dataStr = JSON.stringify(customer, null, 2);
+
+                        if (!dataStr) {
+                            console.error("Failed to store in dataStr");
+                            return;
+                        }
+
+                        // Create file blob
+                        const blob = new Blob([dataStr], { type: "application/json" });
+                        const url = URL.createObjectURL(blob);
+                        const filename = "userinfo.json";
+
+                        // Create a download link
+                        const newLink = document.createElement("a");
+                        newLink.href = url;
+                        newLink.download = filename;
+
+                        // Trigger download
+                        newLink.click();
+
+                        // Clean up
+                        URL.revokeObjectURL(url);
+                    }
+                </script>
+
 
             </form>
 
+            <div class="box2">
+
+                <div class="contactinfo">
+                    <div class="outer-box">
+                        <h1>One Board Shop</h1>
+                    </div>
+                    <p> Call us:</p>
+                    <a href="tel:+1-(778)-891-6654"> +1-(778)-891-6654 </a> <br>
+                    <p> Email us at :</p>
+                    <a href="irofualad@gmail.com">irofualad@gmail.com</a>
+                    <!-- location link to google maps-->
+                    <p> We are located at:
+                        <a href=" https://maps.google.com/?q=1395 Hillside Drive"> 1395 Hillside Drive
+                            V2E 2R7</a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
         </fieldset>
-    
+
     </div>
 </body>

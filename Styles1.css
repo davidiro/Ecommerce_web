@@ -11,7 +11,7 @@ nav ul li a{
    font-family: cursive;
    text-decoration: none;
     margin: 30px;
-   font-style: bold;;
+   font-style: bold;
    color: rgb(234, 150, 41);
    
    
@@ -35,7 +35,6 @@ header {
 .video-container {
   width: 100vw;
   height: 50vh;        /* control height of the box instead */
-  
   overflow: hidden;    /* hides excess video if needed */
   border-radius: 10px;
   display: flex;
