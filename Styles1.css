@@ -181,3 +181,7 @@ side-view-wrapper{
 /* left and right positions */
 .scroll-btn.prev{ left: 6%; }
 .scroll-btn.next{ right: 6%; }
+
+.whatnew {
+    display: none;
+}
