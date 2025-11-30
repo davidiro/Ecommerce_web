@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skate Haven</title>
+    <link rel="stylesheet" href="ProductStyle.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Skate Haven</h1>
+        <input type="text" id="searchBar" placeholder="Search products..." />
+    </header>
+
+    <main>
+        <section id="inventory" class="product-grid"></section>
+    </main>
+
+    <script>
+        const products = [
+            { name: "Classic Deck", description: "Maple wood deck", image: "skatedeck.jpg" },
+            { name: "Street Wheels", description: "Set of 4 urethane wheels for street skating", image: "skatewheels.webp" },
+            { name: "Pro Bearings", description: "High-speed ABEC-9 bearings", image: "skatebearings.webp" },
+            { name: "Skate Shoes", description: "Durable grip shoes for skating", image: "skateshoes.jpg" },
+            { name: "Helmet", description: "Protective gear for safe skating", image: "skatehelmet.jpg" },
+        ];
+
+        const inventorySection = document.getElementById("inventory");
+        const searchBar = document.getElementById("searchBar");
+
+        function displayProducts(filteredProducts) {
+            inventorySection.innerHTML = "";
+            filteredProducts.forEach(product => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" />
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+    `;
+                inventorySection.appendChild(card);
+            });
+        }
+
+        searchBar.addEventListener("input", () => {
+            const keyword = searchBar.value.toLowerCase();
+            const filtered = products.filter(product =>
+                product.name.toLowerCase().includes(keyword) ||
+                product.description.toLowerCase().includes(keyword)
+            );
+            displayProducts(filtered);
+        });
+
+        // Initial display
+        displayProducts(products);
+    </script>
+</body>
+
+</html>
