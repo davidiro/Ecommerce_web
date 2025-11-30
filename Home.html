@@ -52,36 +52,16 @@
                 <img src="images/Nitro pro board.webp" alt="Nitro womens snow board">
                 <img src="images/burton waverange step on.webp" alt="burton womens stow boots">
                 <img src="images/Burton womens waverange.png" alt="burton womens waverange snow boots">
+                <img src="images/skatedeck.jpg" alt="burton womens waverange snow boots">
+                <img src = "images/skatebearings.webp">
+                <img src = "images/skatehelmet.jpg">
+                <img src="images/snow jacket.jpg">
 
             </div>
             <button class="scroll_button_next" aria-label="screll next"></button>
         </div>
 
-        <!-- js for scrollable button-->
-        <script>
-            //initialize variables with widgets
-            const container = document.getElementsByClassName("side_view ");
-            const scrollprev = document.querySelector("scroll_button_prev");
-            const scrollnext = document.querySelector("scroll_button_next");
-
-            //amount the buttons will scroll
-            const scrollAmount = Math.round(container.clientWidth * 0.6);
-
-            scrollprev.addEventListener("click", () => {
-                container.scrollBy({
-                    left: -scrollAmount,
-                    behavior: "smooth"
-                });
-            });
-            scrollnext.addEventListener("click", () => {
-                container.scrollBy({
-                    left: scrollAmount,
-                    behavior: "smooth"
-                });
-            });
-
-        </script>
-
+       
 
         <!-- featured items header-->
         <h1> whats new </h1>
@@ -128,6 +108,30 @@
     </div>
 
 
+ <!-- js for scrollable button-->
+        <script>
+            //initialize variables with widgets
+            const container = document.getElementsByClassName("side_view ");
+            const scrollprev = document.querySelector("scroll_button_prev");
+            const scrollnext = document.querySelector("scroll_button_next");
+
+            //amount the buttons will scroll
+            const scrollAmount = Math.round(container.clientWidth * 0.6);
+
+            scrollprev.addEventListener("click", () => {
+                container.scrollBy({
+                    left: -scrollAmount,
+                    behavior: "smooth"
+                });
+            });
+            scrollnext.addEventListener("click", () => {
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: "smooth"
+                });
+            });
+
+        </script>
 
 
 </body>

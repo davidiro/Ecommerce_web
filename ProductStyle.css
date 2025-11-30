@@ -5,7 +5,24 @@ body {
   background: #f4f4f4;
   color: #333;
 }
+ ul{
+    display : flex;
+    padding: 20px;
+    text-align: center;
+   
+    
+}
 
+nav ul li a{
+   padding-right : 20px;
+   font-family: cursive;
+   text-decoration: none;
+    margin: 30px;
+   font-style: bold;
+   color: rgb(234, 150, 41);
+   
+   
+}
 header {
   background: #222;
   color: #fff;
