@@ -1,102 +1,133 @@
- <!DOCTYPE html>
- <head>
-  <title> FINI ecommerce</title>
-  <link rel="stylesheet" href="Styles1.css">
-  
-  <!-- fave icon for the website-->
-   <link rel="icon" href="images/faveicon.png" type="image/x-icon">
- </head>
- 
- <body>
-    
-    <div id = "outer-container">
- <header>
-    <!-- navigation bar -->
-       <div class = "navigation"> 
-        <nav >
-            <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="Products.html">Products</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="Contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-       </div>
-         
- </header>
+<!DOCTYPE html>
+
+<head>
+    <title> FINI ecommerce</title>
+    <link rel="stylesheet" href="Styles1.css">
+
+    <!-- fave icon for the website-->
+    <link rel="icon" href="images/faveicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div id="outer-container">
+        <header>
+            <!-- navigation bar -->
+            <div class="navigation">
+                <nav>
+                    <ul>
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="Products.html">Products</a></li>
+                        <li><a href="About.html">About Us</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </header>
 
         <!-- company logo -->
-    <img id = "snow" src = "images/logo.webp" alt = "company logo">
+        <img id="snow" src="images/logo.webp" alt="company logo">
 
-    <div class = video-container>
-        <!-- video background -->
-    <video id = "oceans_vid" autoplay loop muted playsinline>
-        <source src = "images/Snowboarding2.mp4" type= "video/mp4"> 
+        <div class=video-container>
+            <!-- video background -->
+            <video id="oceans_vid" autoplay loop muted playsinline>
+                <source src="images/Snowboarding2.mp4" type="video/mp4">
 
-    </video>
-     
+            </video>
 
-    </div>
-
-    <!-- whats new heading -->
-    <h1> Featured items</h1>
-
-    <!-- side view images container(wrapped so js can scroll them) -->
-    <div class = "side-view-wrapper">
-     <button class = "scroll_button_prev" aria-lable = "scroll left"></button>
-
-     <div class = "side-view"> 
-        <img src = "images/nitro teams.webp" alt = "nitro teams snowboard">
-        <img src = "images/Nitro snow board.webp" alt = "nitro mens snow board">
-        <img src = "images/Nitro pro board.webp" alt = "Nitro womens snow board">
-        <img src = "images/burton waverange step on.webp" alt = "burton womens stow boots">
-        <img src = "images/Burton womens waverange.png" alt = "burton womens waverange snow boots">
 
         </div>
-        <button class = "scroll_button_next" aria-label = "screll next"></button>
+
+        <!-- whats new heading -->
+        <h1> Featured items</h1>
+
+        <!-- side view images container(wrapped so js can scroll them) -->
+        <div class="side-view-wrapper">
+            <button class="scroll_button_prev" aria-lable="scroll left"></button>
+
+            <div class="side-view">
+                <img src="images/nitro teams.webp" alt="nitro teams snowboard">
+                <img src="images/Nitro snow board.webp" alt="nitro mens snow board">
+                <img src="images/Nitro pro board.webp" alt="Nitro womens snow board">
+                <img src="images/burton waverange step on.webp" alt="burton womens stow boots">
+                <img src="images/Burton womens waverange.png" alt="burton womens waverange snow boots">
+
+            </div>
+            <button class="scroll_button_next" aria-label="screll next"></button>
+        </div>
+
+        <!-- js for scrollable button-->
+        <script>
+            //initialize variables with widgets
+            const container = document.getElementsByClassName("side_view ");
+            const scrollprev = document.querySelector("scroll_button_prev");
+            const scrollnext = document.querySelector("scroll_button_next");
+
+            //amount the buttons will scroll
+            const scrollAmount = Math.round(container.clientWidth * 0.6);
+
+            scrollprev.addEventListener("click", () => {
+                container.scrollBy({
+                    left: -scrollAmount,
+                    behavior: "smooth"
+                });
+            });
+            scrollnext.addEventListener("click", () => {
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: "smooth"
+                });
+            });
+
+        </script>
+
+
+        <!-- featured items header-->
+        <h1> whats new </h1>
+        <div class="grid-images">
+            <div class="img-wrapper">
+                <img src="images/snowboard fun1.jpg" alt="snowboard fun image">
+                <div class="info-card">
+                    <p> 2025 Winter Boards Just Dropped</p>
+                    <p> Our newest lineup is here with lighter cores, improved edge control, and fresh graphics inspired
+                        by backcountry terrain. Whether you're carving groomers or hitting pow stashes, these boards are
+                        built to level up your ride.</p>
+                </div>
+            </div>
+
+            <div class="img-wrapper">
+                <img src="images/snowboard fun 3.jpg" alt="snowboard fun image">
+                <div class="info-card">
+                    <p> Limited Edition “Glacier Fade” Series</p>
+                    <p> We launched a limited print series designed by local B.C. artists. Only 300 boards are
+                        available—once they're gone, they're gone.</p>
+                </div>
+            </div>
+
+            <div class="img-wrapper">
+                <img src="images/snow board fun2.jpg" alt="snowboard fun image">
+                <div class="info-card">
+                    <p> New Demo Days Announced</p>
+                    <p> Try our latest boards for free at Sun Peaks, Whistler, and Big White throughout December. Bring
+                        your boots, we'll handle the rest.</p>
+                </div>
+            </div>
+
+            <div class="img-wrapper">
+                <img src="images/snowboard fun4.jpg" alt="snowboard fun image">
+                <div class="info-card">
+                    <p> Tune & Wax Service Upgrade</p>
+                    <p> Our tune shop now offers same-day sharpening and eco-friendly hot waxing. Drop off in the
+                        morning, ride by noon.</p>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
-  <!-- js for scrollable button-->
-   <script>
-    //initialize variables with widgets
-    const container = document.getElementsByClassName("side_view ");
-    const scrollprev = document.querySelector("scroll_button_prev");
-    const scrollnext = document.querySelector("scroll_button_next");
 
-    //amount the buttons will scroll
-    const scrollAmount = Math.round(container.clientWidth * 0.6);
 
-    scrollprev.addEventListener("click", () => {
-        container.scrollBy({
-            left: -scrollAmount,
-            behavior: "smooth"
-        });
-    });
-    scrollnext.addEventListener("click", () => {
-        container.scrollBy({
-            left: scrollAmount,
-            behavior: "smooth"
-        });
-    });
 
-   </script>
-    
-
-    <!-- featured items header-->
-     <h1> whats new </h1>
-  <div class = "grid-images">
-        <!-- images for the whats new tag-->
-    <img src ="images/snowboard fun1.jpg"   alt = "snowboard fun image">
-    <img src = "images/snowboard fun 3.jpg" alt = "snowboard fun image">
-    <img src = "images/snow board fun2.jpg" alt = "snowboard fun image">
-    <img src = "images/snowboard fun4.jpg"  alt = "snowboard fun image">
-
-  </div>
-
-    </div>
-   
-    
-
-    
- </body>
- 
+</body>
