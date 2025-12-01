@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snowboard Pro Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .navigation {
+            margin-bottom: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .search-section {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        #searchBar {
+            padding: 0.8rem;
+            width: 300px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        #searchBar:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .filter-btn, .sort-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #ffd700;
+            background: transparent;
+            color: #ffd700;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover, .sort-btn:hover {
+            background: #ffd700;
+            color: #1a1a2e;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: #ffd700;
+            color: #1a1a2e;
+        }
+
+        main {
+            padding: 2rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .results-info {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+            background: #f0f0f0;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image-container img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ffd700;
+            color: #1a1a2e;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: #1a1a2e;
+            font-size: 1.3rem;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .product-category {
+            display: inline-block;
+            background: #667eea;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.95);
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #fff;
+        }
+
+        .empty-state h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state p {
+            font-size: 1.2rem;
+        }
+
+        .clear-filters-btn {
+            padding: 0.8rem 1.5rem;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .clear-filters-btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #667eea;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease forwards;
+            z-index: 1000;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+                padding: 0.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-section {
+                flex-direction: column;
+            }
+
+            #searchBar {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1>❄️ Snowboard Pro Shop ❄️</h1>
+        <div class="search-section">
+            <input type="text" id="searchBar" placeholder="Search boards, boots, gear..." />
+            <button class="clear-filters-btn" id="clearFiltersBtn">Clear Filters</button>
+        </div>
+        <div class="controls">
+            <button class="filter-btn" data-category="boards">Boards</button>
+            <button class="filter-btn" data-category="boots">Boots</button>
+            <button class="filter-btn" data-category="apparel">Apparel</button>
+            <button class="sort-btn" id="sortAtoZ">Sort A-Z</button>
+            <button class="sort-btn" id="sortNewest">Sort Newest</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="results-info" id="resultsInfo"></div>
+        <section id="inventory" class="product-grid"></section>
+    </main>
+
+    <script>
+        const products = [
+            { id: 1, name: "Nitro Pro Board", category: "boards", description: "Professional-grade snowboard with carbon reinforcement", price: 349.99, image: "https://via.placeholder.com/300x200?text=Nitro+Pro" },
+            { id: 2, name: "Burton Waverange Boots", category: "boots", description: "Premium women's step-on boots with comfort lining", price: 299.99, image: "https://via.placeholder.com/300x200?text=Burton+Boots" },
+            { id: 3, name: "Snowboard Gloves Pro", category: "apparel", description: "Waterproof gloves with thermal insulation", price: 89.99, image: "https://via.placeholder.com/300x200?text=Gloves" },
+            { id: 4, name: "Nitro Teams Board", category: "boards", description: "Retro-style snowboard perfect for freestyle tricks", price: 299.99, image: "https://via.placeholder.com/300x200?text=Teams+Board" },
+            { id: 5, name: "Snow Jacket Elite", category: "apparel", description: "Cozy, waterproof snow jacket with modern design", price: 199.99, image: "https://via.placeholder.com/300x200?text=Snow+Jacket" },
+            { id: 6, name: "Advanced Bindings", category: "boards", description: "High-performance bindings for control and comfort", price: 179.99, image: "https://via.placeholder.com/300x200?text=Bindings" },
+            { id: 7, name: "Thermal Base Layer", category: "apparel", description: "Moisture-wicking base layer for all-day warmth", price: 59.99, image: "https://via.placeholder.com/300x200?text=Base+Layer" },
+            { id: 8, name: "Supreme Boots X", category: "boots", description: "Men's premium boots with ankle support", price: 329.99, image: "https://via.placeholder.com/300x200?text=Supreme+Boots" },
+            { id: 9, name: "Freestyle Board 360", category: "boards", description: "Symmetrical board designed for tricks and park riding", price: 379.99, image: "https://via.placeholder.com/300x200?text=Freestyle" },
+            { id: 10, name: "Pro Goggles UV", category: "apparel", description: "UV-protection goggles with anti-fog technology", price: 129.99, image: "https://via.placeholder.com/300x200?text=Goggles" },
+        ];
+
+        let filteredProducts = [...products];
+        const inventorySection = document.getElementById("inventory");
+        const searchBar = document.getElementById("searchBar");
+        const resultsInfo = document.getElementById("resultsInfo");
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const sortBtns = document.querySelectorAll(".sort-btn");
+        const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+        let activeCategory = null;
+
+        function displayProducts(productsToDisplay) {
+            inventorySection.innerHTML = "";
+
+            if (productsToDisplay.length === 0) {
+                inventorySection.innerHTML = `
+                    <div class="empty-state">
+                        <h2>No Products Found</h2>
+                        <p>Try adjusting your search or filters</p>
+                    </div>
+                `;
+                resultsInfo.textContent = "0 products found";
+                return;
+            }
+
+            resultsInfo.textContent = `${productsToDisplay.length} product${productsToDisplay.length !== 1 ? 's' : ''} found`;
+
+            productsToDisplay.forEach((product, index) => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" />
+                        <span class="product-badge">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">${product.category.toUpperCase()}</span>
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="product-footer">
+                            <span class="product-price">$${product.price.toFixed(2)}</span>
+                            <button class="add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener("mouseenter", () => {
+                    card.style.animation = "none";
+                });
+
+                card.addEventListener("click", (e) => {
+                    if (e.target.classList.contains("add-to-cart-btn")) return;
+                    showToast(`${product.name} added to cart!`);
+                });
+
+                const addToCartBtn = card.querySelector(".add-to-cart-btn");
+                addToCartBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    showToast(`${product.name} added to cart!`);
+                });
+
+                inventorySection.appendChild(card);
+            });
+        }
+
+        function filterProducts() {
+            const searchKeyword = searchBar.value.toLowerCase();
+            
+            filteredProducts = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchKeyword) ||
+                                    product.description.toLowerCase().includes(searchKeyword);
+                const matchesCategory = !activeCategory || product.category === activeCategory;
+                return matchesSearch && matchesCategory;
+            });
+
+            displayProducts(filteredProducts);
+        }
+
+        function sortProducts(sortType) {
+            if (sortType === "aToZ") {
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortType === "newest") {
+                filteredProducts.sort((a, b) => b.id - a.id);
+            }
+            displayProducts(filteredProducts);
+        }
+
+        function showToast(message) {
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = "slideIn 0.3s ease forwards reverse";
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        // Event Listeners
+        searchBar.addEventListener("input", filterProducts);
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                filterBtns.forEach(b => b.classList.remove("active"));
+                
+                if (activeCategory === btn.dataset.category) {
+                    activeCategory = null;
+                } else {
+                    activeCategory = btn.dataset.category;
+                    btn.classList.add("active");
+                }
+                
+                filterProducts();
+            });
+        });
+
+        document.getElementById("sortAtoZ").addEventListener("click", () => {
+            sortProducts("aToZ");
+            showToast("Sorted A to Z");
+        });
+
+        document.getElementById("sortNewest").addEventListener("click", () => {
+            sortProducts("newest");
+            showToast("Sorted by Newest");
+        });
+
+        clearFiltersBtn.addEventListener("click", () => {
+            searchBar.value = "";
+            activeCategory = null;
+            filterBtns.forEach(btn => btn.classList.remove("active"));
+            filteredProducts = [...products];
+            displayProducts(filteredProducts);
+            showToast("Filters cleared");
+        });
+
+        searchBar.addEventListener("focus", () => {
+            searchBar.style.borderBottom = "3px solid #ffd700";
+        });
+
+        searchBar.addEventListener("blur", () => {
+            searchBar.style.borderBottom = "none";
+        });
+
+        // Initial display
+        displayProducts(filteredProducts);
+    </script>
+</body>
+</html>
