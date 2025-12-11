@@ -57,6 +57,7 @@
       <img src="${product.image}" alt="${product.name}" />
       <h3>${product.name}</h3>
       <p>${product.description}</p>
+      <button onclick="addToCart('${product.name}', 29.99)">Add to Cart</button>
     `;
                 inventorySection.appendChild(card);
             });
@@ -70,7 +71,20 @@
             );
             displayProducts(filtered);
         });
-
+// add a new function for the add to cart functionality
+        function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existing = cart.find(item => item.name === name);
+    
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ name, price, quantity: 1 });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+}
         // Initial display
         displayProducts(products);
     </script>
