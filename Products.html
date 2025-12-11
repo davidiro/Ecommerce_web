@@ -71,7 +71,7 @@
             );
             displayProducts(filtered);
         });
-// add a new function for the add to cart functionality
+// Function for the add to cart functionality
         function addToCart(name, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existing = cart.find(item => item.name === name);
