@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>products page</title>
+    <link rel="stylesheet" href="ProductStyle.css" />
+</head>
+
+<body>
+    <header>
+        <div class="navigation">
+                <nav>
+                    <ul>
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="Products.html">Products</a></li>
+                        <li><a href="About.html">About Us</a></li>
+                        <li><a href="Checkout.html">Checkout</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+
+        <h1>One Board shop</h1>
+        <input type="text" id="searchBar" placeholder="Search products..." />
+    </header>
+
+    <main>
+        <section id="inventory" class="product-grid"></section>
+    </main>
+
+    <script>
+        const products = [
+            { name: "Classic Deck", description: "Maple wood deck", image: "images/skatedeck.jpg" },
+            { name: "Street Wheels", description: "Set of 4 urethane wheels for street skating", image: "images/skatewheels.webp" },
+            { name: "Pro Bearings", description: "High-speed ABEC-9 bearings", image: "images/skatebearings.webp" },
+            { name: "Skate Shoes", description: "Durable grip shoes for skating", image: "images/skateshoes.jpg" },
+            { name: "Helmet", description: "Protective gear for safe skating", image: "images/skatehelmet.jpg" },
+            { name: "Nitro pro board", description: "Nitro grade snow board", image: "images/Nitro pro board.webp" },
+            { name: "Burton waverange", description: "Burton womens waverange snow boots", image:"images/burton waverange step on.webp" },
+            {name : "Snowboard Gloves", description: "Waterproof gloves for snowboarding", image:"images/snowboardGloves.jpg"},
+            {name: "Burton waverange", description: "Burton womens waverange snow boots", image:"images/Burton womens waverange.png" },
+             {name: "Nito Teams", description: "Nitro teams retro snow board", image:"images/nitro teams.webp" },
+             {name: "Nito Teams", description: "Nitro teams retro snow board", image:"images/Nitro snow board.webp" },
+             {name: "snow jacket", description: "cozy snow jackets", image:"images/snow jacket.jpg" },
+            
+        ];
+
+        const inventorySection = document.getElementById("inventory");
+        const searchBar = document.getElementById("searchBar");
+
+        function displayProducts(filteredProducts) {
+            inventorySection.innerHTML = "";
+            filteredProducts.forEach(product => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" />
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <button onclick="addToCart('${product.name}', 29.99)">Add to Cart</button>
+    `;
+                inventorySection.appendChild(card);
+            });
+        }
+
+        searchBar.addEventListener("input", () => {
+            const keyword = searchBar.value.toLowerCase();
+            const filtered = products.filter(product =>
+                product.name.toLowerCase().includes(keyword) ||
+                product.description.toLowerCase().includes(keyword)
+            );
+            displayProducts(filtered);
+        });
+// Function for the add to cart functionality
+        function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existing = cart.find(item => item.name === name);
+    
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ name, price, quantity: 1 });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+}
+        // Initial display
+        displayProducts(products);
+    </script>
+    <a href="Checkout.html" class="checkout-btn">Proceed to Checkout</a>
+</body>
+
+</html>
