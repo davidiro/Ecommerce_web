@@ -5,24 +5,31 @@ body {
   background: #f4f4f4;
   color: #333;
 }
- ul{
-    display : flex;
+
+ul {
+    display: flex;
     padding: 20px;
     text-align: center;
-   
-    
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-nav ul li a{
-   padding-right : 20px;
+/* ========== UPDATED NAVIGATION STYLING ========== */
+nav ul li a {
+   padding-right: 20px;
    font-family: cursive;
    text-decoration: none;
-    margin: 30px;
+   margin: 30px;
    font-style: bold;
-   color: rgb(234, 150, 41);
-   
-   
+   color: #fff;
+   transition: color 0.3s ease;
 }
+
+nav ul li a:hover {
+   color: rgb(234, 150, 41);
+}
+/* ========== END UPDATED NAVIGATION STYLING ========== */
+
 header {
   background: #222;
   color: #fff;
@@ -51,6 +58,12 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   padding: 1rem;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .product-card img {
@@ -66,4 +79,68 @@ header {
 .product-card p {
   font-size: 0.9rem;
   color: #666;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: rgb(234, 150, 41);
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-decoration 0.3s ease;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+.add-to-cart-btn {
+    background-color: #ff6b35;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    width: auto;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.add-to-cart-btn:active {
+    background-color: #cc4a21;
+    transform: translateY(0);
+}
+
+.checkout-btn {
+    display: inline-block;
+    background-color: #ff6b35;
+    color: white;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    margin: 20px;
+}
+
+.checkout-btn:hover {
+    background-color: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.checkout-btn:active {
+    background-color: #cc4a21;
+    transform: translateY(0);
 }
