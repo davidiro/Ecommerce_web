@@ -67,3 +67,55 @@ header {
   font-size: 0.9rem;
   color: #666;
 }
+  .add-to-cart-btn {
+            background-color: #ff6b35;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .add-to-cart-btn:active {
+            background-color: #cc4a21;
+            transform: translateY(0);
+        }
+
+        /* ========== NEW CHECKOUT BUTTON STYLE ========== */
+        .checkout-btn-link {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+            margin-top: 20px;
+        }
+
+        .checkout-btn-link:hover {
+            background-color: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+
+        .checkout-btn-link:active {
+            background-color: #1e8449;
+            transform: translateY(0);
+        }
+  
