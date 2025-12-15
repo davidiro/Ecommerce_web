@@ -7,22 +7,21 @@
     <title>products page</title>
     <link rel="stylesheet" href="ProductStyle.css" />
 </head>
-
 <body>
     <header>
         <div class="navigation">
-                <nav>
-                    <ul>
-                        <li><a href="Home.html">Home</a></li>
-                        <li><a href="Products.html">Products</a></li>
-                        <li><a href="About.html">About Us</a></li>
-                        <li><a href="Checkout.html">Checkout</a></li>
-                        <li><a href="Contact.html">Contact Us</a></li>
-                    </ul>
-                </nav>
-
-        <h1>One Board shop</h1>
-        <input type="text" id="searchBar" placeholder="Search products..." />
+            <nav>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Products.html">Products</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                    <li><a href="checkout.html">check out</a></li>
+                </ul>
+            </nav>
+            <h1>One Board shop</h1>
+            <input type="text" id="searchBar" placeholder="Search products..." />
+        </div>
     </header>
 
     <main>
@@ -31,19 +30,18 @@
 
     <script>
         const products = [
-            { name: "Classic Deck", description: "Maple wood deck", image: "images/skatedeck.jpg" },
-            { name: "Street Wheels", description: "Set of 4 urethane wheels for street skating", image: "images/skatewheels.webp" },
-            { name: "Pro Bearings", description: "High-speed ABEC-9 bearings", image: "images/skatebearings.webp" },
-            { name: "Skate Shoes", description: "Durable grip shoes for skating", image: "images/skateshoes.jpg" },
-            { name: "Helmet", description: "Protective gear for safe skating", image: "images/skatehelmet.jpg" },
-            { name: "Nitro pro board", description: "Nitro grade snow board", image: "images/Nitro pro board.webp" },
-            { name: "Burton waverange", description: "Burton womens waverange snow boots", image:"images/burton waverange step on.webp" },
-            {name : "Snowboard Gloves", description: "Waterproof gloves for snowboarding", image:"images/snowboardGloves.jpg"},
-            {name: "Burton waverange", description: "Burton womens waverange snow boots", image:"images/Burton womens waverange.png" },
-             {name: "Nito Teams", description: "Nitro teams retro snow board", image:"images/nitro teams.webp" },
-             {name: "Nito Teams", description: "Nitro teams retro snow board", image:"images/Nitro snow board.webp" },
-             {name: "snow jacket", description: "cozy snow jackets", image:"images/snow jacket.jpg" },
-            
+            { name: "Classic Deck", description: "Maple wood deck", price: 79.99, image: "images/skatedeck.jpg" },
+            { name: "Street Wheels", description: "Set of 4 urethane wheels for street skating", price: 49.99, image: "images/skatewheels.webp" },
+            { name: "Pro Bearings", description: "High-speed ABEC-9 bearings", price: 34.99, image: "images/skatebearings.webp" },
+            { name: "Skate Shoes", description: "Durable grip shoes for skating", price: 89.99, image: "images/skateshoes.jpg" },
+            { name: "Helmet", description: "Protective gear for safe skating", price: 59.99, image: "images/skatehelmet.jpg" },
+            { name: "Nitro pro board", description: "Nitro grade snow board", price: 399.99, image: "images/Nitro pro board.webp" },
+            { name: "Burton waverange", description: "Burton womens waverange snow boots", price: 249.99, image: "images/burton waverange step on.webp" },
+            { name: "Snowboard Gloves", description: "Waterproof gloves for snowboarding", price: 44.99, image: "images/snowboardGloves.jpg" },
+            { name: "Burton waverange", description: "Burton womens waverange snow boots", price: 249.99, image: "images/Burton womens waverange.png" },
+            { name: "Nito Teams", description: "Nitro teams retro snow board", price: 349.99, image: "images/nitro teams.webp" },
+            { name: "Nito Teams", description: "Nitro teams retro snow board", price: 349.99, image: "images/Nitro snow board.webp" },
+            { name: "snow jacket", description: "cozy snow jackets", price: 159.99, image: "images/snow jacket.jpg" },
         ];
 
         const inventorySection = document.getElementById("inventory");
@@ -55,11 +53,12 @@
                 const card = document.createElement("div");
                 card.className = "product-card";
                 card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}" />
-      <h3>${product.name}</h3>
-      <p>${product.description}</p>
-      <button onclick="addToCart('${product.name}', 29.99)">Add to Cart</button>
-    `;
+                    <img src="${product.image}" alt="${product.name}" />
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p style="font-weight: bold; color: #ff6b35; margin: 10px 0;">$${product.price}</p>
+                    <button class="add-to-cart-btn" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                `;
                 inventorySection.appendChild(card);
             });
         }
@@ -72,24 +71,22 @@
             );
             displayProducts(filtered);
         });
-// Function for the add to cart functionality
+
         function addToCart(name, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existing = cart.find(item => item.name === name);
-    
-    if (existing) {
-        existing.quantity += 1;
-    } else {
-        cart.push({ name, price, quantity: 1 });
-    }
-    
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${name} added to cart!`);
-}
-        // Initial display
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existing = cart.find(item => item.name === name);
+            
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} added to cart!`);
+        }
+
         displayProducts(products);
     </script>
-    <a href="Checkout.html" class="checkout-btn">Proceed to Checkout</a>
 </body>
-
 </html>
